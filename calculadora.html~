@@ -46,15 +46,7 @@
                  op = "-";
                  aresta=true;
                  asuma=false;
-              });  
-
-	 $("#cubo").on("click",function(){
-              var i = $("#pantalla"); 
-              if(isNaN(i.val())){
-                i.val("ERROR")
-              }else{i.val(i.val()*i.val()*i.val());}              
-              });
- 
+              });   
           $("#cuadrado").on("click",function(){
               var i = $("#pantalla"); 
               if(isNaN(i.val())){
@@ -138,7 +130,6 @@
   		<button id="suma"> + </button>
   		<button id="resta"> - </button>
   		<button id="cuadrado"> x<sup>2</sup> </button>
-		<button id="cubo"> x<sup>3</sup> </button>
   		<button id="inverso"> 1/x </button>
   		<button id="raiz"> sqrt(x) </button>
   		<button id="pentera"> parte_entera(x) </button>
