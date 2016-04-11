@@ -7,17 +7,17 @@
     <link href="/Practica3/movil.css" rel="stylesheet" type="text/css" media="handheld and max-width: 480px">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
-    
-    	var j=0;
-    	var asuma=false;
-    	var aresta=false;
+      var t=0;
+      var j=0;
+      var asuma=false;
+      var aresta=false;
       var op;
       $(function() {
-        	$("#pantalla").on("click",function(){
-        	    $("#pantalla").val("");
-        	    });
-        	    
-        	$("#suma").on("click",function() {
+          $("#pantalla").on("click",function(){
+              $("#pantalla").val("");
+              });
+              
+          $("#suma").on("click",function() {
               var i = $("#pantalla");             
               if(isNaN(i.val())){
                 i.val("ERROR");
@@ -51,13 +51,19 @@
               var i = $("#pantalla"); 
               if(isNaN(i.val())){
                 i.val("ERROR")
-              }else{i.val(i.val()*i.val());}              
+              }else{i.val(i.val()*i.val());
+                var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+              }              
               });
           $("#inverso").on("click",function(){
               var i = $("#pantalla");
               if(isNaN(i.val())){
                 i.val("ERROR")
-              }else{i.val(1/i.val());}
+              }else{i.val(1/i.val());
+                var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+              }
               });
           $("#raiz").on("click",function(){
               var i = $("#pantalla");
@@ -66,19 +72,28 @@
               }else if(i.val()<0){
                 i.val("ERROR")
               }else{
-                i.val(Math.sqrt(i.val()));}
+                i.val(Math.sqrt(i.val()));
+                var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+              }
               });
           $("#pentera").on("click",function(){
               var i = $("#pantalla");
               if(isNaN(i.val())){
                 i.val("ERROR");}
-              else{ i.val(Math.round(i.val()));}
+              else{ i.val(Math.round(i.val()));
+                var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+              }
               });
           $("#potencia2").on("click",function(){
               var i = $("#pantalla");
               if (isNaN(i.val())){
                 i.val("ERROR");
-              }else{i.val(Math.pow(2,i.val()));}
+              }else{i.val(Math.pow(2,i.val()));
+                var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+              }
               });
           $("#factorial").on("click",function(){
               var i = $("#pantalla");               
@@ -89,13 +104,15 @@
               else if(i.val()>170){
                 i.val("Infinity");
               }
-              else{
-                var y = i.val();
+              else{                
                 var resultado = 1;
-                for(var n=1; n<=y.val(); n++){
+                for(var n=1; n<=i.val(); n++){
                   resultado *= n;
                 }
-                i.val(resultado);}  
+                i.val(resultado);
+                var tabla = document.getElementById("lista");
+                tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+              }  
               });
           $("#igual").on("click",function(){
               asuma=false;
@@ -104,16 +121,33 @@
               if(isNaN(i.val()) || isNaN(j)){
                i.val("ERROR");
               }else{
-                if (op==="+") {i.val(+i.val() + +j); op="";
+                if (op==="+") {i.val(+i.val() + +j); op=""; 
+                  var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
                 }else if (op==="-") {i.val(+j - +i.val()); op="";
+                   var tabla = document.getElementById("lista");
+                   tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
+                }else if (op ==="f"){i.val(+t/(1 + +i.val())); op="";
+                  var tabla = document.getElementById("lista");
+                  tabla.innerHTML += "<tr><td>" + i.val() + "</td><td> " + (new Date().toString()) + "</td></tr>";
                 }else{i.val("ERROR");
                 }
+              }
+              });
+          $("#fxy").on("click",function(){
+              var i = $("#pantalla");
+              if (isNaN(i.val())){
+                i.val("ERROR");
+              }else{
+                t= i.val();
+                op="f";
               }
               });
           $("#limpiar").on("click",function(){
               var i = $("#pantalla");
               i.val("");
               j=0;
+              t=0;
               op="";
               asuma=false;
               aresta=false;
@@ -127,16 +161,24 @@
     <h3> Número: </h3>
     <p id="pp"><input type ="text" id="pantalla" style="width: 312px;height: 40px;font-size: 25px;"></p>
     <div id="main">
-  		<button id="suma"> + </button>
-  		<button id="resta"> - </button>
-  		<button id="cuadrado"> x<sup>2</sup> </button>
-  		<button id="inverso"> 1/x </button>
-  		<button id="raiz"> sqrt(x) </button>
-  		<button id="pentera"> parte_entera(x) </button>
-  		<button id="potencia2"> 2<sup>x</sup> </button>
-  		<button id="factorial"> x! </button>
-  		<button id="igual"> = </button>
-  		<button id="limpiar"> Limpiar </button>
-		</div>
+      <button id="suma"> + </button>
+      <button id="resta"> - </button>
+      <button id="cuadrado"> x<sup>2</sup> </button>
+      <button id="inverso"> 1/x </button>
+      <button id="raiz"> sqrt(x) </button>
+      <button id="pentera"> parte_entera(x) </button>
+      <button id="potencia2"> 2<sup>x</sup> </button>
+      <button id="factorial"> x! </button>
+      <button id="igual"> = </button>
+      <button id="fxy"> f(x,y) </button>
+      <button id="limpiar"> Limpiar </button>
+    </div>
+    <pre> </pre>
+    <table id="lista">
+      <tr>
+        <th>Resultado</th>
+        <th>Fecha</th>
+      </tr>
+    </table>
   </body>
 </html>
