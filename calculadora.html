@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <title>CORE2016 P3</title>
     <link href="/Practica3/normal.css" rel="stylesheet" type="text/css" media="screen">
     <link href="/Practica3/movil.css" rel="stylesheet" type="text/css" media="handheld and max-width: 480px">
@@ -46,7 +46,13 @@
                  op = "-";
                  aresta=true;
                  asuma=false;
-              });   
+              });  
+          $("#cubo").on("click",function(){
+              var i = $("#pantalla"); 
+              if(isNaN(i.val())){
+                i.val("ERROR")
+              }else{i.val(i.val()*i.val()*i.val());}              
+              });
           $("#cuadrado").on("click",function(){
               var i = $("#pantalla"); 
               if(isNaN(i.val())){
@@ -161,8 +167,10 @@
     <h3> Número: </h3>
     <p id="pp"><input type ="text" id="pantalla" style="width: 312px;height: 40px;font-size: 25px;"></p>
     <div id="main">
+<<<<<<< HEAD
       <button id="suma"> + </button>
       <button id="resta"> - </button>
+      <button id="cuadrado"> x<sup>3</sup> </button>
       <button id="cuadrado"> x<sup>2</sup> </button>
       <button id="inverso"> 1/x </button>
       <button id="raiz"> sqrt(x) </button>
@@ -179,6 +187,18 @@
         <th>Resultado</th>
         <th>Fecha</th>
       </tr>
-    </table>
+    </table>				
+  	<button id="suma"> + </button>
+  	<button id="resta"> - </button>
+  	<button id="cuadrado"> x<sup>2</sup> </button>
+	<button id="cubo"> x<sup>3</sup> </button>
+  	<button id="inverso"> 1/x </button>
+  	<button id="raiz"> sqrt(x) </button>
+  	<button id="pentera"> parte_entera(x) </button>
+  	<button id="potencia2"> 2<sup>x</sup> </button>
+  	<button id="factorial"> x! </button>
+  	<button id="igual"> = </button>
+  	<button id="limpiar"> Limpiar </button>
+   </div>
   </body>
 </html>
