@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CORE2016 P3</title>
+    <link href="/Practica3/normal.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="/Practica3/movil.css" rel="stylesheet" type="text/css" media="handheld and max-width: 480px">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    
+    	var j=0;
+    	var asuma=false;
+    	var aresta=false;
+      var op;
+      $(function() {
+        	$("#pantalla").on("click",function(){
+        	    $("#pantalla").val("");
+        	    });
+        	    
+        	$("#suma").on("click",function() {
+              var i = $("#pantalla");             
+              if(isNaN(i.val())){
+                i.val("ERROR");
+              }else if (asuma==true){
+                  j= (+j + +i.val());
+              }else if (aresta==true){
+                  j= (+j - +i.val());
+              }else{
+                  j= $("#pantalla").val();
+              }
+                op = "+";
+                aresta=false;
+                asuma=true;
+              });     
+          $("#resta").on("click",function() {
+              var i = $("#pantalla"); 
+              if(isNaN(i.val())){
+                i.val("ERROR");
+              }else if (asuma==true){
+                  j= (+j + +i.val());
+              }else if (aresta==true){
+                  j= (+j - +i.val());
+              }else{
+                  j= $("#pantalla").val();
+              }
+                 op = "-";
+                 aresta=true;
+                 asuma=false;
+              });   
+          $("#cuadrado").on("click",function(){
+              var i = $("#pantalla"); 
+              if(isNaN(i.val())){
+                i.val("ERROR")
+              }else{i.val(i.val()*i.val());}              
+              });
+          $("#inverso").on("click",function(){
+              var i = $("#pantalla");
+              if(isNaN(i.val())){
+                i.val("ERROR")
+              }else{i.val(1/i.val());}
+              });
+          $("#raiz").on("click",function(){
+              var i = $("#pantalla");
+              if(isNaN(i.val())){
+                i.val("ERROR");
+              }else if(i.val()<0){
+                i.val("ERROR")
+              }else{
+                i.val(Math.sqrt(i.val()));}
+              });
+          $("#pentera").on("click",function(){
+              var i = $("#pantalla");
+              if(isNaN(i.val())){
+                i.val("ERROR");}
+              else{ i.val(Math.round(i.val()));}
+              });
+          $("#potencia2").on("click",function(){
+              var i = $("#pantalla");
+              if (isNaN(i.val())){
+                i.val("ERROR");
+              }else{i.val(Math.pow(2,i.val()));}
+              });
+          $("#factorial").on("click",function(){
+              var i = $("#pantalla");               
+              if(isNaN(i.val())){
+                i.val("ERROR");}
+              if(i.val()<0 || i.val()%1 !==0){
+                i.val("ERROR");}
+              else if(i.val()>170){
+                i.val("Infinity");
+              }
+              else{
+                var y = i.val();
+                var resultado = 1;
+                for(var n=1; n<=y.val(); n++){
+                  resultado *= n;
+                }
+                i.val(resultado);}  
+              });
+          $("#igual").on("click",function(){
+              asuma=false;
+              aresta=false;
+              var i = $("#pantalla"); 
+              if(isNaN(i.val()) || isNaN(j)){
+               i.val("ERROR");
+              }else{
+                if (op==="+") {i.val(+i.val() + +j); op="";
+                }else if (op==="-") {i.val(+j - +i.val()); op="";
+                }else{i.val("ERROR");
+                }
+              }
+              });
+          $("#limpiar").on("click",function(){
+              var i = $("#pantalla");
+              i.val("");
+              j=0;
+              op="";
+              asuma=false;
+              aresta=false;
+              });
+        });
+    </script>
+  </head>
+  <body>
+    <header id="cabecera">Buenos días, bienvenido a la calculadora de Jaime Pérez Sánchez (jaime.perez.sanchez@alumnos.upm.es)</header>
+    <pre> </pre>
+    <h3> Número: </h3>
+    <p id="pp"><input type ="text" id="pantalla" style="width: 312px;height: 40px;font-size: 25px;"></p>
+    <div id="main">
+  		<button id="suma"> + </button>
+  		<button id="resta"> - </button>
+  		<button id="cuadrado"> x<sup>2</sup> </button>
+  		<button id="inverso"> 1/x </button>
+  		<button id="raiz"> sqrt(x) </button>
+  		<button id="pentera"> parte_entera(x) </button>
+  		<button id="potencia2"> 2<sup>x</sup> </button>
+  		<button id="factorial"> x! </button>
+  		<button id="igual"> = </button>
+  		<button id="limpiar"> Limpiar </button>
+		</div>
+  </body>
+</html>
